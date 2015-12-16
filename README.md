@@ -1,4 +1,4 @@
-#modular_device_interface
+#modular_device_protocol
 
 Authors:
 
@@ -37,7 +37,7 @@ Example JSON-RPC 2.0 request:
 {"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}
 ```
 
-The modular device interface uses a compact version of JSON-RPC
+The modular device protocol uses a compact version of JSON-RPC
 requests. Instead of being a JSON object, the compact request instead
 uses a JSON array. The "jsonrpc" and "id" members are not used, only
 the "method" and "params" members. JSON arrays are ordered collections
