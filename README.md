@@ -52,13 +52,16 @@ Example compact JSON-RPC request:
 ```
 
 The compact request requires fewer server resources to parse than the
-full object request, is communicated more quickly from client to
-server, and the compact request also makes it easier to send the
-server requests manually from a command line. Modular device servers
-use a JSON sanitizer to sanitizes erroneous, but interpretable JSON
-strings before parsing the requests. This allows a super compact form
-of the request that is very easy to type manually on a command line
-when interacting with a modular device server.
+full object request making it easier to implement on small embedded
+devices with limited processors. The compact request is communicated
+more quickly from client to server than the full request and the
+compact request also makes it easier to send the server requests
+manually from a command line. Modular device servers use a JSON
+[sanitizer](https://github.com/janelia-arduino/JsonSanitizer.git) to
+sanitize erroneous, but interpretable JSON strings before parsing the
+requests. This allows a super compact form of the request that is very
+easy to type manually on a command line when interacting with a
+modular device server.
 
 Example of a super compact JSON-RPC request:
 
