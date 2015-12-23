@@ -56,12 +56,16 @@ full object request making it easier to implement on small embedded
 devices with limited processors. The compact request is communicated
 more quickly from client to server than the full request and the
 compact request also makes it easier to send the server requests
-manually from a command line. Modular device servers use a JSON
+manually from a command line.
+
+Modular device servers use a JSON
 [sanitizer](https://github.com/janelia-arduino/JsonSanitizer.git) to
 sanitize erroneous, but interpretable JSON strings before parsing the
 requests. This allows a super compact form of the request that is very
 easy to type manually on a command line when interacting with a
-modular device server.
+modular device server. The super compact form should ONLY be sent from
+command lines since the server response to the super compact form may
+mess up the parsers on other modular device clients.
 
 Example of a super compact JSON-RPC request:
 
@@ -103,6 +107,22 @@ Example compact JSON-RPC response:
 {"id":"subtract","result":19}
 ```
 
+The server assumes that super compact requests originate from client
+commmand lines, so it pretty prints the JSON to make it easier to read
+on a terminal. In fact the super compact should ONLY be sent from
+command lines since the extra newlines in the server response to the
+super compact form may mess up the parsers on other modular device
+clients.
+
+Example super compact JSON-RPC response:
+
+```json
+{
+  "id": "subtract",
+  "result": 19
+}
+```
+
 ##Examples
 
 Here are some more request and response examples using the syntax:
@@ -128,6 +148,13 @@ method error:
 <-- {"id":"foobar","error":{"message":"Method not found","code":-32601}}
 ```
 
+Example of a successful compact JSON-RPC request and response:
+
+```json
+--> ["blinkLed",0.5,0.5,10]
+<-- {"id":"blinkLed","result":null}
+```
+
 Example super compact JSON-RPC request and response with a
 non-existent method error:
 
@@ -147,10 +174,7 @@ Reponses to super compact JSON-RPC are pretty printed with additional
 newline characters to make it easier to read the reponse in a serial
 terminal.
 
-```json
---> ["blinkLed",0.5,0.5,10]
-<-- {"id":"blinkLed","result":null}
-```
+Example of a successful super compact JSON-RPC request and response:
 
 ```json
 --> getLedPin
