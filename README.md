@@ -1,4 +1,4 @@
-#modular_device_protocol
+# modular_device_protocol
 
 Authors:
 
@@ -21,7 +21,7 @@ In JSON-RPC, the Client is defined as the origin of Request objects
 and the handler of Response objects. The Server is defined as the
 origin of Response objects and the handler of Request objects.
 
-##Request
+## Request
 
 Clients send servers requests to invoke server methods.
 
@@ -79,7 +79,7 @@ it is obviously an ordered set of values, so it can easily be
 sanitized into valid JSON by adding the missing outer brackets, by
 quoting the unquoted strings, and converting the spaces to commas.
 
-##Response
+## Response
 
 JSON-RPC 2.0 responses are JSON objects that contain four members,
 "jsonrpc" specifying the version of the protocol, "result", "error",
@@ -123,7 +123,7 @@ Example super compact JSON-RPC response:
 }
 ```
 
-##Examples
+## Examples
 
 Here are some more request and response examples using the syntax:
 
