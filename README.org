@@ -12,30 +12,16 @@
     <-- data sent to Client
     --> ["blinkLed",0.5,0.5,10]
     <-- {"id":"blinkLed","result":null}
-    --> getLedPin
-    <--
-    {
-      "id":"getLedPin",
-      "result":13
-    }
   #+END_SRC
 ** Python
    #+BEGIN_SRC python
      dev.blink_led(0.5,0.5,10)
-     led_pin = dev.get_led_pin()
    #+END_SRC
 ** Matlab
    #+BEGIN_SRC matlab
      dev.blinkLed(0.5,0.5,10)
-     led_pin = dev.getLedPin()
    #+END_SRC
 ** Microcontroller
    #+BEGIN_SRC C++
      dev.call("blinkLed",0.5,0.5,10);
-     StaticJsonBuffer<80> json_buffer;
-     long led_pin = dev.callGetResult(json_buffer,"getLedPin");
-     if (dev.callWasSuccessful())
-      {
-        Serial << "led_pin: " << led_pin << "\n";
-      }
    #+END_SRC
